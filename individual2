@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import sys
+
+if __name__ == '__main__':
+    # Ввести список одной строкой.
+    spisok = list(map(float, input("Введите список элементов через пробел: ").split()))
+    # Определить диапазон от А до B.
+    A, B = map(float, input("Введите диапазон элементов: ").split())
+    count = 0
+    sum = 0
+    max_idx = 0
+    # проходим по списку и считаем количество элементов
+    # в диапазоне и находим сумму элементов после максимального
+    for i in range(len(spisok)):
+
+        if A <= spisok[i] <= B:
+            count += 1
+        if spisok[i] > spisok[max_idx]:
+            max_idx = i
+        if i > max_idx:
+            sum += spisok[i]
+    # выводим результаты
+    print("Количество элементов в диапазоне от", A, "до", B, ":", count)
+    print("Сумма элементов после максимального элемента:", sum)
+
+    # сортируем элементы списка по убыванию модулей и выводим его на экран
+    spisok.sort(reverse=True, key=abs)
+    print("Список, упорядоченный по убыванию модулей элементов:", spisok)
